@@ -1,0 +1,15 @@
+{
+  "name": "nodejs",
+  "version": "1.0.0",
+  "description": "this is Nodejs training for fresher",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "(https://github.com/pankaj9723/NODEJS.git)"
+  },
+  "author": "PANKAJ",
+  "license": "ISC"
+}
