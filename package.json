@@ -5,13 +5,20 @@
   "main": "server.js",
   "scripts": {
     "test": "node test",
-    "build":"npm install",
-    "start":"node server.js"
+    "build": "npm install",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
     "url": "(https://github.com/pankaj9723/NODEJS.git)"
   },
   "author": "PANKAJ",
-  "license": "ISC"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pankaj9723/NODEJS/issues"
+  },
+  "homepage": "https://github.com/pankaj9723/NODEJS#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }
