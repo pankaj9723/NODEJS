@@ -4,7 +4,9 @@
   "description": "this is Nodejs training for fresher",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node test",
+    "build":"npm install",
+    "start":"node server.js"
   },
   "repository": {
     "type": "git",
