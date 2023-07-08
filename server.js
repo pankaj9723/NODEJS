@@ -16,7 +16,11 @@ const mongoose = require('mongoose')
 const app = express()
 const port = 8001
 
-// mongodb://pankaj9723:pankaj9723@ac-rxlfufj-shard-00-00.togkdzo.mongodb.net:27017,ac-rxlfufj-shard-00-01.togkdzo.mongodb.net:27017,ac-rxlfufj-shard-00-02.togkdzo.mongodb.net:27017/?ssl=true&replicaSet=atlas-9y85gb-shard-0&authSource=admin&retryWrites=true&w=majority
+const mongoUrl= 'mongodb://pankaj9723:pankaj9723@ac-rxlfufj-shard-00-00.togkdzo.mongodb.net:27017,ac-rxlfufj-shard-00-01.togkdzo.mongodb.net:27017,ac-rxlfufj-shard-00-02.togkdzo.mongodb.net:27017/?ssl=true&replicaSet=atlas-9y85gb-shard-0&authSource=admin&retryWrites=true&w=majority';
+
+// mongodb connection
+mongoose.connect(mongoUrl)
+  .then(() => console.log('Connected!'));
 
 app.get('/', (req, res) => {
   // logic
