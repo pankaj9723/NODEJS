@@ -20,7 +20,10 @@ const mongoUrl= 'mongodb://pankaj9723:pankaj9723@ac-rxlfufj-shard-00-00.togkdzo.
 
 // mongodb connection
 mongoose.connect(mongoUrl)
-  .then(() => console.log('Connected!'));
+  .then(() => console.log('Connected!'))
+  .catch((error)=>{
+    console.log(error);
+  })
 
 app.get('/', (req, res) => {
   // logic
