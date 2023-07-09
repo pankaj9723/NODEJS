@@ -14,6 +14,7 @@ app.listen(port, () => {
 const express = require("express");
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const userModel = require("./model/userSchema");
 const app = express()
 const port = 8001
 
@@ -50,12 +51,14 @@ db.once("open", function () {
   console.log("Connected successfully");
 });
 
-const userModel = require("./model/userSchema");
+// const userModel = require("./model/userSchema");
 
 
 /* async-await
 promise
 callback */
+
+// API TO ADD NEW USER IN MONGODB
 
 app.post("/add_user", async (request, response) => {
   let insertData = {"name" : request.body.name,
@@ -70,6 +73,8 @@ app.post("/add_user", async (request, response) => {
   }
 });
 
+// API TO GET ALL USER FROM MONGODB
+
 app.get("/users", (request, response) => {
   userModel.find({}).then((list)=>{
     response.send(list);
@@ -78,35 +83,40 @@ app.get("/users", (request, response) => {
   })
 });
 
-  /* app.get("/users", (request, response) => {
-    userModel.find({}).then((list)) => {
-      response.send(list);
-    }).catch((err)=>{
-      response.status(500).send(err);
-    })
- */
+ 
 
-/* 
-app.get('/', (req, res) => {
-  // logic
-  res.send("Hello World!")
+
+
+// API TO GET PARTICULAR USER IN MONGODB
+app.get('/user/:userId',function(req,res){
+  userModel.find({"_id":req.params.userId}).then((list)=>{
+    res.send(list);
+  }).catch((err)=>{
+    res.send(err);
+  })
+});
+
+/* API to Update particular user Details in MongoDB */
+app.put('/updateUser/:id', (req, res) => {
+  console.log("Id to update:::::", req.params.id)
+  const taskToUpdate = req.body;
+  userModel.findOneAndUpdate({"_id":req.params.id},taskToUpdate)
+  .then((user)=>{
+      res.send("User Updated Successfully");
+  }).catch((err)=>{
+      res.send(err);
+  })
 })
 
-app.post('/post', (req, res) => {
-  // logic
-  res.send("this is our post method")
+/* API to Hard delete particular user Details in MongoDB */
+app.delete('/deleteUser/:userId',function(req,res){
+  userModel.deleteOne({"_id":req.params.userId})
+ .then((user)=>{
+     res.send(user);
+ }).catch((err)=>{
+     res.send(err);
+ })
 })
-
-app.delete('/delete', (req, res) => {
-  //logic
-  res.send("this is delete method")
-})
-
-
-app.put('/put', (req, res) => {
-  //logic
-  res.send("this is put method")
-}) */
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
