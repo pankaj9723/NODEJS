@@ -1,14 +1,4 @@
-/* const express = require('express')
-const app = express()
-const port = 3000
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
-
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-}) */
 
 
 const express = require("express");
@@ -21,20 +11,9 @@ const port = 8001
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 const mongoUrl= 'mongodb://pankajk:manisha123@ac-rxlfufj-shard-00-00.togkdzo.mongodb.net:27017,ac-rxlfufj-shard-00-01.togkdzo.mongodb.net:27017,ac-rxlfufj-shard-00-02.togkdzo.mongodb.net:27017/?ssl=true&replicaSet=atlas-9y85gb-shard-0&authSource=admin&retryWrites=true&w=majority';
-// const mongoUrl= 'mongodb://manisha_data:manisha9723@ac-rxlfufj-shard-00-00.togkdzo.mongodb.net:27017,ac-rxlfufj-shard-00-01.togkdzo.mongodb.net:27017,ac-rxlfufj-shard-00-02.togkdzo.mongodb.net:27017/?ssl=true&replicaSet=atlas-9y85gb-shard-0&authSource=admin&retryWrites=true&w=majority';
 
 
-// comments starts here
 
-// mongodb connection
-/* mongoose.connect(mongoUrl)
-  .then(() => console.log('Connected!'))
-  .catch((error)=>{
-    console.log(error);
-  }) */
-
-
-//  <!-- comment ends here -->
 
 // mongoose.connect("mongodb://TechnophileFirdous:Technophile1234@ac-k5g9okb-shard-00-00.kzuwf7d.mongodb.net:27017,ac-k5g9okb-shard-00-01.kzuwf7d.mongodb.net:27017,ac-k5g9okb-shard-00-02.kzuwf7d.mongodb.net:27017/?ssl=true&replicaSet=atlas-xjy27e-shard-0&authSource=admin&retryWrites=true&w=majority"
 mongoose.connect(mongoUrl,
@@ -73,6 +52,7 @@ app.post("/add_user", async (request, response) => {
   }
 });
 
+
 // API TO GET ALL USER FROM MONGODB
 
 app.get("/users", (request, response) => {
@@ -96,6 +76,7 @@ app.get('/user/:userId',function(req,res){
   })
 });
 
+
 /* API to Update particular user Details in MongoDB */
 app.put('/updateUser/:id', (req, res) => {
   console.log("Id to update:::::", req.params.id)
@@ -108,6 +89,7 @@ app.put('/updateUser/:id', (req, res) => {
   })
 })
 
+
 /* API to Hard delete particular user Details in MongoDB */
 app.delete('/deleteUser/:userId',function(req,res){
   userModel.deleteOne({"_id":req.params.userId})
@@ -117,6 +99,7 @@ app.delete('/deleteUser/:userId',function(req,res){
      res.send(err);
  })
 })
+
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
