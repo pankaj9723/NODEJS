@@ -13,6 +13,10 @@ router.use((req, res, next) => {
     next()
 })
 router.get("/",function(req,res){
-    res.send("hello pankaj kya kar rahe ho");
+    res.send("hello pankaj data is connected");
+})
+
+router.get("/second",function(req,res){
+    res.send("hello world from second class");
 })
 module.exports =router;
